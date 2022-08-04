@@ -9,6 +9,7 @@
 importScripts('kfilecache.js')
 const Kache = new KFUCache()
 let Cancel = false
+let UploadURL = '../server/kfileupload.php'
 
 self.onmessage = function (msg) {
     const content = msg.data
@@ -16,6 +17,11 @@ self.onmessage = function (msg) {
     switch(content.operation) {
         case 'cancel':
             Cancel = true;
+            break
+        case 'init':
+            if (content.url) {
+                UploadURL = content.url
+            }
             break
     }
 }
@@ -41,7 +47,7 @@ function sendChunk (idb, chunkKey) {
             headers.append('x-kfu-token', chunk.token)
             headers.append('x-kfu-hash', chunk.hash)
             headers.append('x-kfu-path', chunk.path)
-            fetch('../../../web/upload.php', {method: 'POST', body: chunk.part, headers: headers})
+            fetch(UploadURL, {method: 'POST', body: chunk.part, headers: headers})
             .then (response => {
                 if (!response.ok) { reject(); return }
                 return response.json()

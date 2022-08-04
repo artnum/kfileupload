@@ -12,7 +12,7 @@ const Kache = new KFUCache()
 const Uploader = new Worker('kfileuploader.js')
 let NetDown = false
 let Cancel = false
-const KChunkSize = 1048576 // 1meg, max nginx post body size
+let KChunkSize = 1048576 // 1meg, max nginx post body size
 self.onmessage = function (msg) {
     Cancel = false
     if (msg.data.operation) {
@@ -22,6 +22,15 @@ self.onmessage = function (msg) {
                 Cancel = true
                 Kache.clear()
                 break
+            case 'init':
+                if (msg.data.url) {
+                    Uploader.postMessage({operation: 'init', url: msg.data.url})
+                }
+                if (msg.data.chunksize) {
+                    KChunkSize = msg.data.chunksize
+                }
+                break
+
         }
         return
     }
