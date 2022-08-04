@@ -14,7 +14,6 @@ Create two functions kfu_upload_done and kfu_upload_failed that are called when 
     'filetype' => // filetype,
     'token' => // a token for the upload,
     'hash' => // sha256 of the file,
-    'path' => // file path,
     'parts' => // array of each chunk id
 
 You need also to define two constants : KFU_UPLOAD_PATH and KFU_MAX_ALLOWED_SIZE. 

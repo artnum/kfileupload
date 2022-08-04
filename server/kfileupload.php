@@ -55,8 +55,7 @@ $MAP = [
     'filesize' => ['HTTP_X_KFU_FILESIZE', 'int'],
     'token' => ['HTTP_X_KFU_TOKEN', 'tok'],
     'hash' => ['HTTP_X_KFU_HASH', 'tok'],
-    'filetype' => ['HTTP_X_KFU_FILETYPE', 'str'],
-    'path' => ['HTTP_X_KFU_PATH', 'str']
+    'filetype' => ['HTTP_X_KFU_FILETYPE', 'str']
 ];
 
 function fail() {
@@ -109,7 +108,6 @@ $meta = [
     'token' => $chunk['token'],
     'filetype' => $chunk['filetype'],
     'hash' => $chunk['hash'],
-    'path' => $chunk['path'],
     'parts' => []
 ];
 

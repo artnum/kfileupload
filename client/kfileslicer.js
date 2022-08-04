@@ -60,7 +60,6 @@ self.onmessage = function (msg) {
                 filesize: file.size,
                 filetype: file.type,
                 token: msg.data.token,
-                path: msg.data.path,
                 part: buffer.slice(i, i + KChunkSize),
                 id: `${msg.data.token}-${partCount.toString().padStart(6, '0')}`
             }

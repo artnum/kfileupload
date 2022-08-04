@@ -46,7 +46,6 @@ function sendChunk (idb, chunkKey) {
             headers.append('x-kfu-filetype', chunk.filetype)
             headers.append('x-kfu-token', chunk.token)
             headers.append('x-kfu-hash', chunk.hash)
-            headers.append('x-kfu-path', chunk.path)
             fetch(UploadURL, {method: 'POST', body: chunk.part, headers: headers})
             .then (response => {
                 if (!response.ok) { reject(); return }
