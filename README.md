@@ -2,6 +2,13 @@
 
 Javascript uploader for file, allow to upload in background and in chunks (so not limited by max post size of server). Backend is php.
 
+## Features
+  
+  * Upload out of main thread
+  * Re-startable upload (even if user quits the browser)
+  * Upload cancelation
+  * Allow to upload file bigger than upload_max_filesize and post_max_size = 10M or any other http post limit.
+
 ## Server side usage
 
 Create two functions kfu_upload_done and kfu_upload_failed that are called when the file has either been uploaded or the upload has failed. They will have an array as the only argument containing :
